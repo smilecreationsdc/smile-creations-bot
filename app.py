@@ -10,7 +10,7 @@ line_bot_api = LineBotApi(os.environ['CHANNEL_ACCESS_TOKEN'])
 handler = WebhookHandler(os.environ['CHANNEL_SECRET'])
 claude = anthropic.Anthropic(api_key=os.environ['ANTHROPIC_API_KEY'])
 
-SYSTEM_PROMPT = """คุณคือผู้ช่วยตอบคำถามของ Smile Creations Dental Clinic 
+SYSTEM_PROMPT = """คุณคือผู้ช่วยตอบคำถามของ Smile Creations Dental Clinic
 คลินิกทันตกรรมย่านสะพานควาย กรุงเทพฯ
 
 ข้อมูลคลินิก:
