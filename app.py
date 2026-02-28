@@ -35,8 +35,15 @@ def webhook():
     return 'OK'
 
 @handler.add(MessageEvent, message=TextMessage)
+@handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     user_message = event.message.text
+    
+    # คำที่เกี่ยวกับนัด ให้เงียบเลย
+    keywords = ["นัด", "เลื่อน", "ยกเลิก", "ตาราง", "ว่าง", "จอง"]
+    if any(k in user_message for k in keywords):
+        return
+    
     response = claude.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=1024,
@@ -45,6 +52,9 @@ def handle_message(event):
     )
     reply_text = response.content[0].text
     line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text=reply_text)
+    )
         event.reply_token,
         TextSendMessage(text=reply_text)
     )
