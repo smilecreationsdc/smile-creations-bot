@@ -40,7 +40,7 @@ def handle_message(event):
     user_message = event.message.text
     
     # คำที่เกี่ยวกับนัด ให้เงียบเลย
-    keywords = ["นัด", "เลื่อน", "ยกเลิก", "ตาราง", "ว่าง", "จอง"]
+    keywords = ["มีวันไหนว่าง", "ขอนัด", "จองคิว", "เลื่อนนัด", "ยกเลิกนัด", "ตารางว่าง", "วันไหนว่าง", "คิวว่าง"]
     if any(k in user_message for k in keywords):
         return
     
